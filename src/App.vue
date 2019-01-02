@@ -1,7 +1,7 @@
 <template>
   <div id="app" class="row">
     <div class="sidebar">sidebar here</div>
-    <data-table :items="items" />
+    <data-table/>
   </div>
 </template>
 

@@ -6,16 +6,17 @@
           @blur="hideItems"
           @keypress.enter="selectItem(options[0][field_name]);displayItems=false"
           >
+          <transition name="fade">
 
-          <div v-if="displayItems && options.length && options[0][field_name] != inputModel" class="input-items">
+          <div v-if="displayItems" class="input-items">
               <span
               v-for="(option,option_key) in options"
               :key="option_key"
               @click="selectItem(option[field_name])">
               {{option[field_name]}}
               </span>
-
           </div>
+          </transition>
 
        </td>
 </template>
@@ -39,14 +40,14 @@ export default {
                 return []
             }
             
-        }
+        },
     },
     methods:{
         showItems(){this.displayItems = true},
         hideItems(){
             setTimeout(()=>{
                 this.displayItems = false
-            },160)
+            },100)
         },
         selectItem(val){
             this.inputModel = val;
@@ -76,5 +77,13 @@ input,.input-items>span,th{
 td.selected{
     background: rgb(49, 211, 111);
     z-index: 10;
+}
+
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .3s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active до версии 2.1.8 */ {
+  opacity: 0;
 }
 </style>

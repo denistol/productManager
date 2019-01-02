@@ -1,28 +1,50 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div class="sidebar">sidebar here</div>
+    <data-table/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
+
+import axios from 'axios'
+import dataTable from './components/table.vue';
 
 export default {
   name: 'app',
-  components: {
-    HelloWorld
+  components:{dataTable},
+  data(){
+    return {
+      items:[],
+      len:100,
+    }
+  },
+  methods:{
+  },
+  mounted(){
+      axios.get('https://jsonplaceholder.typicode.com/comments')
+      .then(res=>this.items = res.data);
   }
+  
 }
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="scss">
+  *{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+  }
+  div{
+    display: flex;
+    // flex-direction: column;
+  }
+  table{
+    width: 100%;
+    border-collapse: collapse;
+  }
+  td,th{
+    border: 1px solid #ddd;
+  }
 </style>

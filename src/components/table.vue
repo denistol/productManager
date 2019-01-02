@@ -1,29 +1,42 @@
 <template>
+<div class="col table-wrapper" >
+  some
+  <hr>
 <table class="table">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Status</th>
-      <th>Notes</th>
+      <th v-for="(f,f_key) in fieldsToDisplay" :key="f_key">{{f}}</th>
     </tr>
   </thead>
   <tbody>
-
     <tr>
-      <table-cell/>
-      <table-cell/>
-      <table-cell/>
+      <table-cell
+      v-for="(f,f_key) in fieldsToDisplay"
+      :key="f_key"
+      :field_name="f"
+      >
+      
+      {{f}}
+      </table-cell>
+
     </tr>
 
   </tbody>
 </table>
 
+</div>
 </template>
 <script>
 import tableCell from './cell.vue'
 
 export default {
     components:{tableCell,},
+    props:['items'],
+    data(){
+      return{
+        fieldsToDisplay:['email','body','name'],
+      }
+    }
     
 }
 </script>
@@ -46,5 +59,8 @@ td>input{
   max-height: 100px;
   width: 100%;
   top: 100%;
+}
+.table-wrapper{
+  flex: 1;
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
-  <div id="app">
+  <div id="app" class="row">
     <div class="sidebar">sidebar here</div>
-    <data-table/>
+    <data-table :items="items" />
   </div>
 </template>
 
@@ -23,8 +23,9 @@ export default {
   methods:{
   },
   mounted(){
+    // this.$store.commit('fetchData',[1,2,3])
       axios.get('https://jsonplaceholder.typicode.com/comments')
-      .then(res=>this.items = res.data);
+      .then(res=>this.$store.commit('fetchData',res.data))
   }
   
 }
@@ -32,8 +33,8 @@ export default {
 
 <style lang="scss">
   *{
-    margin: 0;
-    padding: 0;
+    // margin: 0;
+    // padding: 0;
     font-family: sans-serif;
   }
   div{
@@ -42,9 +43,16 @@ export default {
   }
   table{
     width: 100%;
+    flex: 1;
     border-collapse: collapse;
   }
   td,th{
     border: 1px solid #ddd;
+  }
+  .col{
+    flex-direction: column;
+  }
+  .row{
+    flex-direction: row;
   }
 </style>

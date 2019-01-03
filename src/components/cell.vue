@@ -79,16 +79,19 @@ td>input{
     box-sizing: border-box;
 }
 .input-items{
-    margin-top: 5px;
+    margin-top: 1px;
     z-index: 60;
     flex-direction: column;
     position: absolute;
     overflow-y: auto;
     max-height: 300px;
-    width: 99%;
+    width: 100%;
     top: 100%;
-    border: 1px solid rgb(179, 179, 179);
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.26);
+    margin-left: -1px;
+    border-bottom: 1px solid #e2e3e5;
+    border-left: 1px solid #e2e3e5;
+    border-right: 1px solid #e2e3e5;
+    left: 0;
     background-color: rgb(250, 250, 250);
     &>span{
         padding: 7px;

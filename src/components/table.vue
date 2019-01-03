@@ -1,5 +1,6 @@
 <template>
 <div class="col table-wrapper" >
+  <spinner v-if="isLoading"/>
   <div class="row">
     <span>отображать:  </span>
     <span class="field-select" v-bind:class="{'field':fieldsToDisplay.indexOf(f) != -1}" v-for="(f,f_key) in allFields" :key="f_key" @click="toggleField(f)">{{f}}</span>
@@ -34,15 +35,20 @@
 </template>
 <script>
 import tableCell from './cell.vue'
-
+import spinner from './spinner.vue';
 export default {
-    components:{tableCell,},
+    components:{tableCell,spinner},
     props:['items'],
     data(){
       return {
         allFields:['email','body','name','id','postId'],
         fieldsToDisplay:['email','body','id','postId'],
+        loading:true,
       }
+    },
+
+    mounted(){
+      this.$store.dispatch('fetchAllData');
     },
     methods:{
       toggleField(f){
@@ -52,17 +58,15 @@ export default {
         this.fieldsToDisplay.splice(found,1);
       }
     },
-    
+  computed:{
+    isLoading(){return this.$store.state.loading},
+  },
 }
 </script>
 
 <style lang="scss">
-table{
-}
-th:first-child{
-}
+
 th{
-  // text-transform: uppercase;
   padding: 5px;
   text-align: left;
   font-size: 16px;
@@ -72,6 +76,7 @@ td{
   position: relative;
 }
 .table-wrapper{
+  position: relative;
   flex: 1;
 }
 button{

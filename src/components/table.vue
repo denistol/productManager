@@ -2,7 +2,6 @@
 <div class="col table-wrapper" >
   <spinner v-if="isLoading"/>
   <div class="row">
-    <span>отображать:  </span>
     <span class="field-select" v-bind:class="{'field':fieldsToDisplay.indexOf(f) != -1}" v-for="(f,f_key) in allFields" :key="f_key" @click="toggleField(f)">{{f}}</span>
   </div>
   <hr>
@@ -69,7 +68,7 @@ export default {
 th{
   padding: 5px;
   text-align: left;
-  font-size: 16px;
+  // font-size: 16px;
   background-color: #f1f1f1;
 }
 td{
@@ -77,10 +76,13 @@ td{
 }
 .table-wrapper{
   position: relative;
+  border:1px solid #e2e3e5 ;
+  // box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.048);
+  padding: 20px;
   flex: 1;
 }
 button{
-  border-radius: 3px;
+  // border-radius: 3px;
   
   margin-right: 5px;
   cursor: pointer;
@@ -91,9 +93,9 @@ button{
 
 }
 .btn.success{
-  background-color: rgb(138, 207, 81);
+  background-color: #7fcdb6;
   &:hover{
-    background-color: rgb(113, 177, 60);
+    background-color: #6cb49f;
   }
 }
 .btn.danger{
@@ -108,14 +110,16 @@ button{
 }
 .field-select{
   cursor: pointer;
-  font-size: 13px;
+  // font-size: 13px;
   padding: 2px 7px;
-  border-radius: 4px;
-  // border: 1px solid silver;
+  // border-radius: 4px;
+  // border: 1px solid #e2e3e5;
   background-color: rgb(243, 243, 243);
   margin:0 5px;
 }
 .field{
-  background: rgb(199, 211, 206);
+  // background: rgb(199, 211, 206);
+  background-color: #7fcdb6;
+  color: white;
 }
 </style>

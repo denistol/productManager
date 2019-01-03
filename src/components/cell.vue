@@ -7,7 +7,7 @@
           @focus="showItems"
           @blur="hideItems"
           >        
-        <div v-if="displayItems" class="add-value"><img width="10px" src="/add.svg" alt=""></div>
+        <div v-if="displayItems" class="add-value"></div>
           <div v-if="displayItems && !isChosen && options.length" class="input-items">
               <span
               v-for="(option,option_key) in options"
@@ -44,7 +44,7 @@ export default {
         hideItems(){
             setTimeout(()=>{
                 this.displayItems = false
-            },100)
+            },450)
         },
         selectItem(val){
             this.inputModel = val;
@@ -64,7 +64,7 @@ export default {
     position: absolute;
     right: 0;
     align-items: center;
-    font-size: 12px;
+    // font-size: 12px;
     justify-content: center;
 
 }
@@ -74,7 +74,7 @@ td>input{
     padding: 7px;
     border: none;
     outline: none;
-    width: calc(100% - 20px);
+    width: 100%;
     height: 100%;
     box-sizing: border-box;
 }
@@ -99,11 +99,12 @@ td>input{
         &:hover{
             background-color: rgba(27, 26, 37, 0.137);
         }
-        font-size: .7rem;
+        // font-size: .7rem;
     }
 }
 input.selected{
-    border-bottom: 2px solid rgba(113, 177, 60,.40);
+    border: 2px solid rgba(113, 177, 60,.40);
+    border-radius: 3px;
     &:before{
         content:"OK";
         display: block;

@@ -1,32 +1,21 @@
 <template>
   <div id="app" class="row">
-    <div class="sidebar col">
-      <router-link v-bind:class="{ 'active': pageName == '/'}" to="/">Главная</router-link>
-      <router-link v-bind:class="{ 'active': pageName == '/datatable'}" to="datatable">База товаров</router-link>
-      <router-link v-bind:class="{ 'active': pageName == '/options'}" to="options">Параметры</router-link>
-      <router-link v-bind:class="{ 'active': pageName == '/clients'}" to="clients">Клиенты</router-link>
-      <router-link v-bind:class="{ 'active': pageName == '/sales'}" to="sales">Продажи</router-link>
-      <router-link v-bind:class="{ 'active': pageName == '/statistics'}" to="statistics">Статистика</router-link>
-      <a href="#">some lorem item</a>
-    </div>
-    <div class="main-wrapper"><router-view/></div>
-
+    <sidebar/>
+    <div class="main-wrapper col"><router-view/></div>
   </div>
 </template>
 
 <script>
 
 import Vue from 'vue'
-import axios from 'axios'
 import dataTable from './components/table.vue';
 import home from './components/home.vue';
+import sidebar from './components/sidebar.vue';
 import optionsComponent from './components/options.vue';
 import clients from './components/clients.vue';
 import sales from './components/sales.vue';
 import statistics from './components/statistics.vue';
 import VueRouter from 'vue-router'
-
-
 Vue.use(VueRouter)
 const routes = [
   { path: '/datatable', component: dataTable },
@@ -36,21 +25,12 @@ const routes = [
   { path: '/statistics', component: statistics },
   { path: '/', component: home }
 ];
-
-const router = new VueRouter({
-  routes // сокращённая запись для `routes: routes`
-})
+const router = new VueRouter({ routes })
 
 export default {
   router,
   name: 'app',
-  components:{dataTable},
-  data(){
-    return {
-      items:[],
-      len:100,
-    }
-  },
+  components:{sidebar},
   computed:{
     pageName(){return this.$route.path}
   }
@@ -70,9 +50,14 @@ export default {
     display: flex;
     // flex-direction: column;
   }
+  i{
+    color: inherit;
+  }
   body{
+    background-color: rgb(234, 241, 243);
     margin: 0;
     padding: 0;
+    font-size: 14px;
   }
   table{
     border-collapse: collapse;
@@ -94,27 +79,19 @@ export default {
     border-right: 5px solid rgb(0, 255, 179) !important;
       
   }
-  .sidebar{
-    background-color: #222d32;
-    color: white;
-    &>a{
-      font-size: 14px;
-      font-weight: 400;
-      padding: 11px 30px;
-      display: inline;  
-      color: rgb(216, 216, 216);
-      border-right: 5px solid transparent;
-      &:hover{
-        background-color: rgba(0, 0, 0, 0.171);
-        color: white;
-      }
-    }
-  }
+
   #app{
     min-height: 100vh;
   }
   .main-wrapper{
-    padding: 30px;
+    background-color: #fff;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.13);
+    margin: 20px;
+    padding: 20px;
     flex: 1;
+    border-top: 3px solid rgb(0, 255, 179)
+  }
+  .text-danger{
+    color: rgb(207, 81, 91);;
   }
 </style>

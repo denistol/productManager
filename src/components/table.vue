@@ -11,7 +11,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr v-for="i in 1000" :key="i">
+    <tr v-for="i in 5" :key="i">
       <table-cell v-for="(f,f_key) in allFields"
       v-show="fieldsToDisplay.indexOf(f) != -1"
       :key="f_key"
@@ -55,28 +55,10 @@ export default {
 td{
   position: relative;
 }
-td>input{
-  width: 100%;
-  height: 100%;
-  border: none;
-  outline: none;
-  background-color: #fff;
-}
-.input-items{
-  z-index: 60;
-  flex-direction: column;
-  position: absolute;
-  overflow-y: auto;
-  max-height: 100px;
-  width: 100%;
-  top: 100%;
-}
+
+
 .table-wrapper{
   flex: 1;
 }
-.field{
-  &::before{
-    content:"[+] "
-  }
-}
+
 </style>

@@ -32,9 +32,8 @@ export default {
 </script>
 
 <style lang="scss">
+
   *{
-    // margin: 0;
-    // padding: 0;
     font-family: sans-serif;
   }
   div{
@@ -42,8 +41,6 @@ export default {
     // flex-direction: column;
   }
   table{
-    width: 100%;
-    flex: 1;
     border-collapse: collapse;
   }
   td,th{

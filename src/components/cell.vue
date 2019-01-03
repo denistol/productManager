@@ -1,14 +1,14 @@
 <template>
-      <td v-bind:class="{'selected':selected && (selectedItem == inputModel)}">
+      <td>
           <input type="text"
+          v-bind:class="{'selected':isChosen}"
           v-model="inputModel"
+          @keypress.enter="selectItem(options[0][field_name])"
           @focus="showItems"
           @blur="hideItems"
-          @keypress.enter="selectItem(options[0][field_name]);displayItems=false"
-          >
-          <transition name="fade">
+          >        
 
-          <div v-if="displayItems" class="input-items">
+          <div v-if="displayItems && !isChosen" class="input-items">
               <span
               v-for="(option,option_key) in options"
               :key="option_key"
@@ -16,8 +16,6 @@
               {{option[field_name]}}
               </span>
           </div>
-          </transition>
-
        </td>
 </template>
 <script>
@@ -33,14 +31,13 @@ export default {
     },
     computed:{
         options(){
-            if(this.$store.state.items && this.displayItems){
-                let storeItems = this.$store.state.items
-                return storeItems.filter( el=>el[this.field_name].toLowerCase().includes(this.inputModel.toLowerCase()) )
-            }else{
-                return []
-            }
-            
+            return this.$store.state.items ?
+            this.$store.state.items.filter( el=>el[this.field_name].toLowerCase().includes(this.inputModel.toLowerCase()) ):
+            [];
         },
+        isChosen(){
+            return this.options.filter(el=>el[this.field_name] == this.inputModel ).length;
+        }
     },
     methods:{
         showItems(){this.displayItems = true},
@@ -51,39 +48,40 @@ export default {
         },
         selectItem(val){
             this.inputModel = val;
-            this.selected = true;
             this.selectedItem = val;
             // this.hideItems();
         }
-        
     }
    
 };
 </script>
 <style lang="scss">
-input,.input-items>span,th{
-    padding: 10px 0;
-}
+
+
 .input-items{
-    box-sizing: border-box;
+    z-index: 60;
+    flex-direction: column;
+    position: absolute;
+    overflow-y: auto;
+    max-height: 300px;
+    width: 100%;
+    top: 100%;
+    border: 1px solid silver;
+    box-sizing: content-box;
     background-color: rgb(250, 250, 250);
     &>span{
+        padding:10px;
+        cursor: pointer;
         &:hover{
             background-color: rgba(0, 0, 0, 0.123);
         }
         font-size: .7rem;
     }
 }
-td.selected{
-    background: rgb(49, 211, 111);
-    z-index: 10;
+input.selected{
+    background: rgb(233, 255, 241);
+}
+input{
 }
 
-
-.fade-enter-active, .fade-leave-active {
-  transition: opacity .3s;
-}
-.fade-enter, .fade-leave-to /* .fade-leave-active до версии 2.1.8 */ {
-  opacity: 0;
-}
 </style>

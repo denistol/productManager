@@ -1,25 +1,37 @@
 <template>
   <div id="app" class="row">
     <div class="sidebar col">
-      <a href="#">some sidebar item</a>
-      <a href="#">random text</a>
-      <a href="#">link here</a>
-      <a href="#">some sidebar</a>
+      <router-link to="/">home</router-link>
+      <router-link to="datatable">datatable</router-link>
       <a href="#">some lorem item</a>
     </div>
     <div class="main-wrapper">
-    <data-table/>
+
+      <router-view/>
+    
     </div>
   </div>
 </template>
 
 <script>
 
-
+import Vue from 'vue'
 import axios from 'axios'
 import dataTable from './components/table.vue';
+import home from './components/home.vue';
+import VueRouter from 'vue-router'
+Vue.use(VueRouter)
+const routes = [
+  { path: '/datatable', component: dataTable },
+  { path: '/', component: home }
+];
+
+const router = new VueRouter({
+  routes // сокращённая запись для `routes: routes`
+})
 
 export default {
+  router,
   name: 'app',
   components:{dataTable},
   data(){

@@ -1,7 +1,8 @@
 <template>
 <div class="col table-wrapper" >
   <div class="row">
-    <span v-bind:class="{'field':fieldsToDisplay.indexOf(f) == -1}" v-for="(f,f_key) in allFields" :key="f_key" @click="toggleField(f)"><b>{{f}}</b> | </span>
+    <span>отображать:  </span>
+    <span class="field-select" v-bind:class="{'field':fieldsToDisplay.indexOf(f) != -1}" v-for="(f,f_key) in allFields" :key="f_key" @click="toggleField(f)">{{f}}</span>
   </div>
   <hr>
 <table class="table">
@@ -100,5 +101,16 @@ button{
   margin: 10px 20px;
   justify-content: flex-end;
 }
-
+.field-select{
+  cursor: pointer;
+  font-size: 13px;
+  padding: 2px 7px;
+  border-radius: 4px;
+  // border: 1px solid silver;
+  background-color: rgb(243, 243, 243);
+  margin:0 5px;
+}
+.field{
+  background: rgb(199, 211, 206);
+}
 </style>

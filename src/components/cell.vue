@@ -88,7 +88,7 @@ td>input{
     width: 99%;
     top: 100%;
     border: 1px solid rgb(179, 179, 179);
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.102);
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.26);
     background-color: rgb(250, 250, 250);
     &>span{
         padding: 7px;

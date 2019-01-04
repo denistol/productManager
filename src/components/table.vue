@@ -13,9 +13,9 @@
   </thead>
   <tbody>
     <tr>
-      <table-cell v-for="(f,f_key) in allFields" v-show="fieldsToDisplay.indexOf(f) != -1" :key="f_key" :field_name="f" >
+      <td v-for="(f,f_key) in allFields" v-show="fieldsToDisplay.indexOf(f) != -1" :key="f_key" :field_name="f" >
       {{f}}
-      </table-cell>
+      </td>
     </tr>
 
   </tbody>

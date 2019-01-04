@@ -15,7 +15,11 @@ import optionsComponent from './components/options.vue';
 import clients from './components/clients.vue';
 import sales from './components/sales.vue';
 import statistics from './components/statistics.vue';
+import simpletable from './components/simpletable.vue';
+import config from './components/config.vue';
 import VueRouter from 'vue-router'
+
+
 import './sass/base.scss'
 
 Vue.use(VueRouter)
@@ -25,6 +29,8 @@ const routes = [
   { path: '/clients', component: clients },
   { path: '/sales', component: sales },
   { path: '/statistics', component: statistics },
+  { path: '/simpletable', component: simpletable },
+  { path: '/config', component: config },
   { path: '/', component: home }
 ];
 const router = new VueRouter({ routes })

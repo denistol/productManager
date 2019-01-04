@@ -1,18 +1,24 @@
 @import "./table.scss";
+@import "./sidebar.scss";
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
 * {
   font-family: 'Roboto', sans-serif;
   color: rgb(34, 34, 34);
 }
 #app { min-height: 100vh; }
+.flex1{
+  flex: 1;
+  width: 100%;
+}
 button {
   margin-right: 5px;
   cursor: pointer;
   color: white;
   border: none;
   outline: none;
-  padding: 10px;
+  padding: 4px 8px;
   border-radius: 3px;
+  margin: 0 5px;
 }
 .btn.success {
   background-color: #7fcdb6;
@@ -27,12 +33,14 @@ button {
   }
 }
 .main-wrapper {
+  border-radius: 4px;
   background-color: #fff;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.13);
   margin: 20px;
   padding: 20px;
   flex: 1;
-  border-top: 3px solid rgb(0, 255, 179)
+  border-top: 5px solid #9b98ff;
+  
 }
 .text-danger { color: rgb(207, 81, 91); }
 div { display: flex; }
@@ -67,4 +75,15 @@ body {
   border-radius: 2px;
   background-color: #7fcdb6;
   color: white;
+}
+.charts-wrapper{
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+.chart-item{
+  // max-width: 35%;
+  padding: 20px;
+  border: 1px solid #e2e3e5;
+  margin: 0px 15px 15px 0;
+  // flex: 1;
 }

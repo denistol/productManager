@@ -69,8 +69,7 @@
 import moment from 'moment'
 export default {
  computed:{
-     today:() => moment( new Date().now ).format('YYYY-MM-DD')
-    
+     today(){return moment( new Date().now ).format('YYYY-MM-DD')},
  },
  mounted(){
      

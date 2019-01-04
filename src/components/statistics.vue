@@ -9,13 +9,13 @@
     <div class="charts-wrapper row">
         <pie-chart class="chart-item" />
         <line-chart class="chart-item" />
-        <bar-chart class="chart-item" />
+        <bar-chart :chart-label="'тест текста'" class="chart-item" />
         <line-chart class="chart-item" />
-        <bar-chart class="chart-item" />
+        <bar-chart :chart-label="'тест текста'" class="chart-item" />
         <line-chart class="chart-item" />
-        <bar-chart class="chart-item" />
+        <bar-chart :chart-label="'тест текста'" class="chart-item" />
         <line-chart class="chart-item" />
-        <bar-chart class="chart-item" />
+        <bar-chart :chart-label="'тест текста'" class="chart-item" />
         <line-chart class="chart-item" />
     </div>
 </div>
@@ -24,7 +24,11 @@
 import barChart from './charts/barChart.vue'
 import lineChart from './charts/lineChart.vue'
 import pieChart from './charts/pieChart.vue'
+import moment from 'moment'
 export default {
     components:{barChart,lineChart,pieChart},
+    computed:{
+        today(){return moment( new Date().now ).format('YYYY-MM-DD')},
+    },
 }
 </script>

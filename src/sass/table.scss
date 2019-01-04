@@ -46,6 +46,7 @@ td {
         margin-right: 10px;
         padding: 5px 15px;
         border: 1px solid #e2e3e5;
+        border-radius: 3px;
     }
 }
 th{
@@ -56,4 +57,7 @@ th{
 }
 th > i{
     color: #949595;
+}
+input[type="date"]{
+    margin-right: 10px;
 }

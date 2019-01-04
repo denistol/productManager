@@ -1,0 +1,22 @@
+.table-wrapper {
+    position: relative;
+    border: 1px solid #e2e3e5;
+    padding: 20px;
+    flex: 1;
+}
+table{
+    border-collapse: collapse;
+  }
+td,th{
+    border: 1px solid #e2e3e5;
+  }
+th {
+    padding: 5px;
+    text-align: left;
+    background-color: #f1f1f1;
+}
+
+td {
+    position: relative;
+}
+

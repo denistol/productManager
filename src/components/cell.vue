@@ -64,7 +64,6 @@ export default {
     position: absolute;
     right: 0;
     align-items: center;
-    // font-size: 12px;
     justify-content: center;
 
 }
@@ -99,7 +98,6 @@ td>input{
         &:hover{
             background-color: rgba(27, 26, 37, 0.137);
         }
-        // font-size: .7rem;
     }
 }
 input.selected{
@@ -112,7 +110,6 @@ input.selected{
         height: 50px;
         z-index: inherit;
     }
-    
 }
 
 
